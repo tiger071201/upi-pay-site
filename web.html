@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Card Grid</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function handlePayClick() {
+      const upiId = prompt("Enter UPI ID to proceed:");
+      if (upiId) {
+        const upiLink = `upi://pay?pa=mdsulaiman5134-1@okhdfcbank&pn=QNEST&am=999&cu=INR`;
+        window.location.href = upiLink;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="card"><img src="https://source.unsplash.com/200x200/?beach" alt=""><p>Hello</p></div>
+    <div class="card"><img src="https://source.unsplash.com/200x200/?path" alt=""><p>Hello</p></div>
+    <div class="card"><img src="https://source.unsplash.com/200x200/?laptop" alt=""><p>Hello</p></div>
+    <div class="card"><img src="https://source.unsplash.com/200x200/?mountain" alt=""><p>Hello</p></div>
+
+    <div class="card center" onclick="redirectToUPI()" style="cursor:pointer;">
+      <h2>Pay</h2>
+    </div>
+    
+    <script>
+      function redirectToUPI() {
+        const upiLink = `upi://pay?pa=mdsulaiman5134-1@okhdfcbank&pn=QNEST&am=999&cu=INR`;
+        window.location.href = upiLink;
+      }
+    </script>
+    
+    <div class="card"><img src="https://source.unsplash.com/200x200/?plant" alt=""><p>Hello</p></div>
+    <div class="card"><img src="https://source.unsplash.com/200x200/?city" alt=""><p>Hello</p></div>
+    <div class="card"><img src="https://source.unsplash.com/200x200/?sunset" alt=""><p>Hello</p></div>
+  </div>
+</body>
+</html>
