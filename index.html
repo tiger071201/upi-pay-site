@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -28,14 +28,15 @@
       <p>Hello</p>
     </div>
 
-    <!-- UPI Payment Card -->
-    <a href="upi://pay?pa=mdsulaiman5134-1@okhdfcbank&pn=QNEST&am=999&cu=INR">
+     UPI Payment Card -->
+    <!-- <a href="upi://pay?pa=mdsulaiman5134-1@okhdfcbank&pn=QNEST&am=999&cu=INR">
       <div class="card center" style="cursor:pointer; background-color: #d4edda; text-align:center;">
         <h2>Pay</h2>
         <p>Click to pay ₹999</p>
       </div>
     </a>
 
+    
     <div class="card">
       <img src="https://source.unsplash.com/200x200/?plant" alt="">
       <p>Hello</p>
@@ -51,5 +52,43 @@
       <p>Hello</p>
     </div>
   </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pay with UPI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    button {
+      font-size: 18px;
+      padding: 15px 30px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pay Now with UPI</h1>
+  <button onclick="openUPI()">Pay ₹100</button>
+
+  <script>
+    function openUPI() {
+      const upiLink = "upi://pay?pa=yourupiid@bank&pn=Your%20Name&am=100&cu=INR";
+      window.location.href = upiLink;
+    }
+  </script>
 </body>
 </html>
