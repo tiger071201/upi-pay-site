@@ -54,41 +54,511 @@
   </div>
 </body>
 </html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Centered Pay Card Grid</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f3f3;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar {
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: flex-end;
+      padding: 15px 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 20px;
+      margin: 40px;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 15px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .card p {
+      margin-top: 8px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .pay {
+      grid-column: 2;
+      grid-row: 2;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #fdd835;
+    }
+    @keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 15px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.pay {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fdd835;
+  animation: none; /* Disable float animation for center */
+}
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="grid">
+    <div class="card"><img src="img1.jpg" alt="Top Left"><p>Card 1</p></div>
+    <div class="card"><img src="img2.jpg" alt="Top Center"><p>Card 2</p></div>
+    <div class="card"><img src="img3.jpg" alt="Top Right"><p>Card 3</p></div>
+    <div class="card"><img src="img4.jpg" alt="Middle Left"><p>Card 4</p></div>
+    <div class="card pay"><p>Pay</p><p>Action</p></div>
+    <div class="card"><img src="img5.jpg" alt="Middle Right"><p>Card 5</p></div>
+    <div class="card"><img src="img6.jpg" alt="Bottom Left"><p>Card 6</p></div>
+    <div class="card"><img src="img7.jpg" alt="Bottom Center"><p>Card 7</p></div>
+    <div class="card"><img src="img8.jpg" alt="Bottom Right"><p>Card 8</p></div>
+  </div>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fixed Floating Cards</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f3f3f3;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .navbar {
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: flex-end;
+      padding: 15px 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .canvas {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 160px;
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: float 3s ease-in-out infinite;
+      justify-self: center;
+      align-self: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .card p {
+      margin: 6px 0 0;
+      font-size: 14px;
+    }
+
+    .pay {
+      background-color: #fdd835;
+      font-weight: bold;
+      animation: none;
+      z-index: 5;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Place cards using grid-area names (optional for more control) */
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="canvas">
+    <div class="card"><img src="https://source.unsplash.com/140x100/?forest" alt="1"><p>Card 1</p></div>
+    <div class="card"><img src="https://source.unsplash.com/140x100/?beach" alt="2"><p>Card 2</p></div>
+    <div class="card"><img src="https://source.unsplash.com/140x100/?sunset" alt="3"><p>Card 3</p></div>
+    <div class="card"><img src="https://source.unsplash.com/140x100/?plant" alt="4"><p>Card 4</p></div>
+     -->
+    <!-- Center Card -->
+    <!-- <div class="card pay"><p>Pay</p><p>Click to pay ₹999</p></div>
+    
+    <div class="card"><img src="https://source.unsplash.com/140x100/?path" alt="5"><p>Card 5</p></div>
+    <div class="card"><img src="https://source.unsplash.com/140x100/?city" alt="6"><p>Card 6</p></div>
+    <div class="card"><img src="https://source.unsplash.com/140x100/?laptop" alt="7"><p>Card 7</p></div>
+    <div class="card"><img src="https://source.unsplash.com/140x100/?mountain" alt="8"><p>Card 8</p></div>
+  </div>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f3f3f3;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .carousel-container {
+      flex: 1;
+      overflow-x: auto;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 180px;
+      margin: 0 10px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      scroll-snap-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card img {
+      width: 100%;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .card p {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .carousel-container:has(.card:hover) .card {
+      transform: scale(0.9);
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .pay-card {
+      background: #fdd835;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      position: sticky;
+      bottom: 0;
+      z-index: 100;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container" id="carousel">
+    <div class="card"><img src="https://source.unsplash.com/180x100/?forest"><p>Card 1</p></div>
+    <div class="card"><img src="https://source.unsplash.com/180x100/?beach"><p>Card 2</p></div>
+    <div class="card"><img src="https://source.unsplash.com/180x100/?sunset"><p>Card 3</p></div>
+    <div class="card"><img src="https://source.unsplash.com/180x100/?plant"><p>Card 4</p></div>
+    <div class="card"><img src="https://source.unsplash.com/180x100/?mountain"><p>Card 5</p></div>
+  Duplicate for seamless loop -->
+    <!-- <div class="card"><img src="https://source.unsplash.com/180x100/?forest"><p>Card 1</p></div>
+    <div class="card"><img src="https://source.unsplash.com/180x100/?beach"><p>Card 2</p></div>
+  </div>
+
+  <div class="pay-card">
+    Pay ₹999 Now
+  </div>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    let scrollSpeed = 1; // lower = slower
+
+    function autoScroll() {
+      carousel.scrollLeft += scrollSpeed;
+      // If reached end, reset to start
+      if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
+        carousel.scrollLeft = 0;
+      }
+      requestAnimationFrame(autoScroll);
+    }
+
+    autoScroll();
+  </script>
+</body>
+
+</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pay with UPI</title>
+  <title>Auto-Scrolling Carousel</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f3f3;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      display: flex;
+      overflow-x: hidden;
+      white-space: nowrap;
+      scroll-behavior: smooth;
+      padding: 40px 0;
+      flex: 1;
+      align-items: center;
+      position: relative;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 160px;
+      margin: 0 10px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
-      padding-top: 50px;
+      transform: scale(1);
     }
-    button {
+
+    .card img {
+      width: 100%;
+      height: 100px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      object-fit: cover;
+    }
+
+    .card p {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .card.active {
+      transform: scale(1.15);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .pay-card {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fdd835;
+      text-align: center;
+      font-weight: bold;
+      padding: 20px;
       font-size: 18px;
-      padding: 15px 30px;
-      background-color: #4CAF50;
       color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+      z-index: 10;
     }
-    button:hover {
-      background-color: #45a049;
+
+    .pay-card:hover {
+      background-color: #e0c125;
     }
   </style>
 </head>
 <body>
-  <h1>Pay Now with UPI</h1>
-  <button onclick="openUPI()">Pay ₹100</button>
 
+  <div class="carousel-container" id="carousel">
+    <div class="card"><img src="https://th.bing.com/th/id/R.fb535a20667848e1b1c2819904150734?rik=ansXOX3GQyAstA&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2016%2f01%2f200866-nature-landscape-water.jpg&ehk=J6q1BlBYVKEY%2bNBEQh1kxbbDT%2bTlbd5ZzfrkOKvzqUA%3d&risl=&pid=ImgRaw&r=0"><p>Forest</p></div>
+    <div class="card"><img src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg?w=2210&quality=70"><p>Beach</p></div>
+    <div class="card"><img src="https://jooinn.com/images/nature-339.jpg"><p>Sunset</p></div>
+    <div class="card"><img src="https://wallpapers.com/images/hd/nature-landscape-pictures-hg4ndx87jp1rsvth.jpg"><p>Plant</p></div>
+    <div class="card"><img src="https://source.unsplash.com/180x100/?mountain"><p>Mountain</p></div>
+    <!-- Duplicate for smooth loop -->
+    <div class="card"><img src="https://th.bing.com/th/id/R.5c1cb9376b3bee7effa4286fbc6ef4ba?rik=KimYjCSDB1u4jg&riu=http%3a%2f%2fs1.picswalls.com%2fwallpapers%2f2016%2f03%2f29%2fawesome-beautiful-nature-wallpaper_042319501_304.jpg&ehk=8bGUOKnA5IrfEG%2foi23atcc7xm8BmgDPkLvJhn94JwA%3d&risl=&pid=ImgRaw&r=0"><p>Forest</p></div>
+    <div class="card"><img src="https://th.bing.com/th/id/R.1f45fbbef74b9409ff59f8b6a973b490?rik=VfKNIadGTVVoDg&riu=http%3a%2f%2fwebneel.com%2fdaily%2fsites%2fdefault%2ffiles%2fimages%2fdaily%2f08-2018%2f1-nature-photography-spring-season-mumtazshamsee.jpg&ehk=eaQqTLzHEgowByII8QCshI936kFY98rqanl52MLHkEU%3d&risl=&pid=ImgRaw&r=0"><p>Beach</p></div>
+  </div>
+
+  <a href="upi://pay?pa=mdsulaiman5134-1@okhdfcbank&pn=QNEST&am=999&cu=INR" class="pay-card">
+    Pay ₹999 Now
+  </a>
   <script>
-    function openUPI() {
-      const upiLink = "upi://pay?pa=yourupiid@bank&pn=Your%20Name&am=100&cu=INR";
-      window.location.href = upiLink;
+    const carousel = document.getElementById('carousel');
+    const originalCards = Array.from(document.querySelectorAll('.card'));
+    let isPaused = false;
+    let scrollSpeed = 1;
+    let lastCenteredCard = null;
+  
+    // Step 1: Clone the cards twice
+    const cloneSet1 = originalCards.map(card => card.cloneNode(true));
+    const cloneSet2 = originalCards.map(card => card.cloneNode(true));
+  
+    cloneSet1.forEach(clone => carousel.insertBefore(clone, carousel.firstChild));
+    cloneSet2.forEach(clone => carousel.appendChild(clone));
+  
+    // Step 2: Scroll to middle set on load
+    window.addEventListener('load', () => {
+      const totalCardWidth = originalCards[0].offsetWidth + 20; // 160px + margin
+      carousel.scrollLeft = totalCardWidth * originalCards.length;
+    });
+  
+    function getCenterCard() {
+      const carouselRect = carousel.getBoundingClientRect();
+      const center = carouselRect.left + carouselRect.width / 2;
+  
+      let closestCard = null;
+      let closestDistance = Infinity;
+  
+      document.querySelectorAll('.card').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(center - cardCenter);
+  
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestCard = card;
+        }
+      });
+  
+      return closestCard;
     }
+  
+    function autoScroll() {
+      if (!isPaused) {
+        carousel.scrollLeft += scrollSpeed;
+      }
+  
+      const centerCard = getCenterCard();
+      const carouselRect = carousel.getBoundingClientRect();
+      const cardRect = centerCard.getBoundingClientRect();
+      const isCentered = Math.abs((cardRect.left + cardRect.width / 2) - (carouselRect.left + carouselRect.width / 2)) < 3;
+  
+      if (isCentered && centerCard !== lastCenteredCard && !isPaused) {
+        isPaused = true;
+        lastCenteredCard = centerCard;
+  
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+        centerCard.classList.add('active');
+  
+        setTimeout(() => {
+          isPaused = false;
+          centerCard.classList.remove('active');
+        }, 2000);
+      }
+  
+      // Step 3: Reset scroll position before hitting end of scroll (invisible jump)
+      const totalScrollWidth = carousel.scrollWidth;
+      const middle = totalScrollWidth / 3;
+  
+      if (carousel.scrollLeft > middle * 2) {
+        carousel.scrollLeft = middle;
+      }
+  
+      requestAnimationFrame(autoScroll);
+    }
+  
+    autoScroll();
   </script>
+  
 </body>
 </html>
