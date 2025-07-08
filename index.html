@@ -407,7 +407,7 @@
       display: flex;
       overflow-x: hidden;
       white-space: nowrap;
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
       padding: 40px 0;
       flex: 1;
       align-items: center;
@@ -469,96 +469,86 @@
 <body>
 
   <div class="carousel-container" id="carousel">
-    <div class="card"><img src="https://th.bing.com/th/id/R.fb535a20667848e1b1c2819904150734?rik=ansXOX3GQyAstA&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2016%2f01%2f200866-nature-landscape-water.jpg&ehk=J6q1BlBYVKEY%2bNBEQh1kxbbDT%2bTlbd5ZzfrkOKvzqUA%3d&risl=&pid=ImgRaw&r=0"><p>Forest</p></div>
-    <div class="card"><img src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg?w=2210&quality=70"><p>Beach</p></div>
-    <div class="card"><img src="https://jooinn.com/images/nature-339.jpg"><p>Sunset</p></div>
-    <div class="card"><img src="https://wallpapers.com/images/hd/nature-landscape-pictures-hg4ndx87jp1rsvth.jpg"><p>Plant</p></div>
+    <!-- First set (original) -->
+    <div class="card"><img src="https://source.unsplash.com/180x100/?forest"><p>Forest</p></div>
+    <div class="card"><img src="https://source.unsplash.com/180x100/?beach"><p>Beach</p></div>
+    <div class="card"><img src="https://source.unsplash.com/180x100/?sunset"><p>Sunset</p></div>
+    <div class="card"><img src="https://source.unsplash.com/180x100/?plant"><p>Plant</p></div>
     <div class="card"><img src="https://source.unsplash.com/180x100/?mountain"><p>Mountain</p></div>
-    <!-- Duplicate for smooth loop -->
-    <div class="card"><img src="https://th.bing.com/th/id/R.5c1cb9376b3bee7effa4286fbc6ef4ba?rik=KimYjCSDB1u4jg&riu=http%3a%2f%2fs1.picswalls.com%2fwallpapers%2f2016%2f03%2f29%2fawesome-beautiful-nature-wallpaper_042319501_304.jpg&ehk=8bGUOKnA5IrfEG%2foi23atcc7xm8BmgDPkLvJhn94JwA%3d&risl=&pid=ImgRaw&r=0"><p>Forest</p></div>
-    <div class="card"><img src="https://th.bing.com/th/id/R.1f45fbbef74b9409ff59f8b6a973b490?rik=VfKNIadGTVVoDg&riu=http%3a%2f%2fwebneel.com%2fdaily%2fsites%2fdefault%2ffiles%2fimages%2fdaily%2f08-2018%2f1-nature-photography-spring-season-mumtazshamsee.jpg&ehk=eaQqTLzHEgowByII8QCshI936kFY98rqanl52MLHkEU%3d&risl=&pid=ImgRaw&r=0"><p>Beach</p></div>
   </div>
 
   <a href="upi://pay?pa=mdsulaiman5134-1@okhdfcbank&pn=QNEST&am=999&cu=INR" class="pay-card">
     Pay ₹999 Now
   </a>
+
   <script>
     const carousel = document.getElementById('carousel');
-    const originalCards = Array.from(document.querySelectorAll('.card'));
-    let isPaused = false;
     let scrollSpeed = 1;
+    let isPaused = false;
     let lastCenteredCard = null;
-  
-    // Step 1: Clone the cards twice
-    const cloneSet1 = originalCards.map(card => card.cloneNode(true));
-    const cloneSet2 = originalCards.map(card => card.cloneNode(true));
-  
-    cloneSet1.forEach(clone => carousel.insertBefore(clone, carousel.firstChild));
-    cloneSet2.forEach(clone => carousel.appendChild(clone));
-  
-    // Step 2: Scroll to middle set on load
-    window.addEventListener('load', () => {
-      const totalCardWidth = originalCards[0].offsetWidth + 20; // 160px + margin
-      carousel.scrollLeft = totalCardWidth * originalCards.length;
+
+    // Clone cards at the end for infinite scroll illusion
+    const originalCards = Array.from(document.querySelectorAll('.card'));
+    originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      carousel.appendChild(clone);
     });
-  
+
+    // Scroll to first card manually
+    window.addEventListener('load', () => {
+      carousel.scrollLeft = 0;
+      requestAnimationFrame(autoScroll);
+    });
+
     function getCenterCard() {
-      const carouselRect = carousel.getBoundingClientRect();
-      const center = carouselRect.left + carouselRect.width / 2;
-  
-      let closestCard = null;
-      let closestDistance = Infinity;
-  
+      const center = carousel.getBoundingClientRect().left + carousel.clientWidth / 2;
+      let closest = null, minDistance = Infinity;
+
       document.querySelectorAll('.card').forEach(card => {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.left + rect.width / 2;
         const distance = Math.abs(center - cardCenter);
-  
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestCard = card;
+        if (distance < minDistance) {
+          minDistance = distance;
+          closest = card;
         }
       });
-  
-      return closestCard;
+
+      return closest;
     }
-  
+
     function autoScroll() {
       if (!isPaused) {
         carousel.scrollLeft += scrollSpeed;
       }
-  
+
       const centerCard = getCenterCard();
-      const carouselRect = carousel.getBoundingClientRect();
-      const cardRect = centerCard.getBoundingClientRect();
-      const isCentered = Math.abs((cardRect.left + cardRect.width / 2) - (carouselRect.left + carouselRect.width / 2)) < 3;
-  
+      const center = carousel.getBoundingClientRect().left + carousel.clientWidth / 2;
+      const cardCenter = centerCard.getBoundingClientRect().left + centerCard.offsetWidth / 2;
+      const isCentered = Math.abs(center - cardCenter) < 2;
+
       if (isCentered && centerCard !== lastCenteredCard && !isPaused) {
         isPaused = true;
         lastCenteredCard = centerCard;
-  
+
         document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
         centerCard.classList.add('active');
-  
+
         setTimeout(() => {
           isPaused = false;
           centerCard.classList.remove('active');
-        }, 2000);
+        }, 1000); // 1 second pause
       }
-  
-      // Step 3: Reset scroll position before hitting end of scroll (invisible jump)
-      const totalScrollWidth = carousel.scrollWidth;
-      const middle = totalScrollWidth / 3;
-  
-      if (carousel.scrollLeft > middle * 2) {
-        carousel.scrollLeft = middle;
+
+      // Reset when we scroll past clones
+      if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 5) {
+        carousel.scrollLeft = 0;
+        lastCenteredCard = null;
       }
-  
+
       requestAnimationFrame(autoScroll);
     }
-  
-    autoScroll();
   </script>
-  
 </body>
 </html>
+
